@@ -80,18 +80,16 @@ def Trim(Leaderboard, Spectrum, N):
     score_list.sort(key=sortByMaxScore)
     score_list.reverse()
     min_length = min(len(score_list), N)
-    flag = True
     j = 0
-    while (flag):
-        if j < min_length:
+    while (j < min_length):
+        res.append(score_list[j][0])
+        j += 1
+    while (j >= min_length):
+        if((j < len(score_list)) and (score_list[min_length-1][1] == score_list[j][1])):
             res.append(score_list[j][0])
             j += 1
         else:
-            if((j < len(score_list)) and (score_list[min_length-1][1] == score_list[j][1])):
-                res.append(score_list[j][0])
-                j += 1
-            else:
-                flag = False
+            break
 
     return res
 
@@ -122,6 +120,12 @@ def main_prog(N, Spectrum):
     LeaderPeptide = '-'.join(LeaderPeptide_list)
     return LeaderPeptide
 
+def CheckInput(N, Spectrum):
+    if N == 0:
+        return False, "N is incorrect"
+    if Spectrum == '' or Spectrum == ' ' or Spectrum == '0' or Spectrum == '0 ':
+        return False, "Spectrum is incorrect"
+    return True, "Correct"
 
 
 # main program
@@ -133,8 +137,14 @@ if __name__ == "__main__":
    # Spectrum = Spectrum[2:len(Spectrum) - 4]
 
     N = 9
-    Spectrum = '0 114 114 114 228 228 228 242 242 342' #'0 71 101 103 113 114 128 131 156 156 172 199 232 242 259 269 270 287 300 303 313 372 372 373 388 398 400 414 431 459 469 486 501 501 503 528 545 570 572 572 587 604 614 642 659 673 675 685 700 701 701 760 770 773 786 803 804 814 831 841 857 874 901 917 917 942 945 959 960 970 972 1002 1073'
-
-    output = main_prog(N, Spectrum)
+    Spectrum = '0 ' #114 114 114 342'
+   #'0 71 101 103 113 114 128 131 156 156 172 199 232 242 259 269 270 287 300 303 313 372 372 373 388 398 400 414 431
+   # 459 469 486 501 501 503 528 545 570 572 572 587 604 614 642 659 673 675 685 700 701 701 760 770 773 786 803 804 814
+   # 831 841 857 874 901 917 917 942 945 959 960 970 972 1002 1073'
+    bool_, text = CheckInput(N, Spectrum)
+    if bool_:
+        output = main_prog(N, Spectrum)
+    else:
+        output = text
     print(output)
 
