@@ -79,6 +79,7 @@ def Trim(Leaderboard, Spectrum, N):
 
     score_list.sort(key=sortByMaxScore)
     score_list.reverse()
+
     min_length = min(len(score_list), N)
     j = 0
     while (j < min_length):
@@ -130,17 +131,9 @@ def CheckInput(N, Spectrum):
 
 # main program
 if __name__ == "__main__":
-   # N_text = str(sys.stdin.readlines(1))
-   # N_text = N_text[2:len(N_text) - 4]
-   # N = int(N_text)
-    #Spectrum = str(sys.stdin.readlines(1))
-   # Spectrum = Spectrum[2:len(Spectrum) - 4]
-
-    N = 9
-    Spectrum = '0 ' #114 114 114 342'
-   #'0 71 101 103 113 114 128 131 156 156 172 199 232 242 259 269 270 287 300 303 313 372 372 373 388 398 400 414 431
-   # 459 469 486 501 501 503 528 545 570 572 572 587 604 614 642 659 673 675 685 700 701 701 760 770 773 786 803 804 814
-   # 831 841 857 874 901 917 917 942 945 959 960 970 972 1002 1073'
+    N_text = input()
+    N = int(N_text)
+    Spectrum = input()
     bool_, text = CheckInput(N, Spectrum)
     if bool_:
         output = main_prog(N, Spectrum)
