@@ -46,9 +46,6 @@ def MedianString(DNA, k):
             distance = d
             median = motif
     return median
-
-    return median
-
 # main program
 if __name__ == "__main__":
 
@@ -62,12 +59,10 @@ if __name__ == "__main__":
      #       break
     #string_split = sys.stdin.read()
     k = 5
-   # d = 1
     string_split = ['GAAACTACGCACGTAGTGTTTTGCTACGGTTCTCA', 'TATATCCACATGACCTCGACAACGCACGGTCGAAT', 'TAGCGGGACAATCAGGTCTGAGTCGACTGTTGTGC',
                     'TCCTGCCGGTTGCTAACTGTAGACGTTTACCCCTT', 'TCCCTCCCTAACTCTAGGCTACTGTCGTCCGCAGT', 'AGGCAGAAAGACAACGGTAGTAATCTAGAGACCGT',
                     'CGCTCCACGCAGCTCATAGAACCGTGTTGTTCAAC', 'ACTGTCTCCCGGAAACCATAAACTACTTGGTTTGT', 'GGTTTTCTTGACTGTAATTACAATCCAGGAGACCA',
                     'ATGTCGCTCTACAGTGAACACGTAACTGTCTTCGG']
-#    string_split = collect_string.split('\n')
 
     output = MedianString(string_split, int(k))
     print(output)
